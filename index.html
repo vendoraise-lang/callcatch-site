@@ -3,312 +3,585 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>CallCatch AI — Never lose a job to a missed call</title>
-<meta name="description" content="CallCatch AI texts back every missed call, answers customer questions, and books appointments for your service business. 24/7, starting at $99/mo.">
+<title>CallCatch AI — Never lose another job to a missed call</title>
+<meta name="description" content="CallCatch AI texts back every missed call, answers customer questions with your business info, and books appointments 24/7 — behind your existing number.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders:opsz,wght@10..72,600;10..72,700;10..72,800&family=Spline+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
-  :root {
-    --navy: #0d1b2a;
-    --navy-2: #14263a;
-    --orange: #ff7a1a;
-    --orange-dark: #e56710;
-    --cream: #faf6f0;
-    --ink: #1b2733;
-    --muted: #5d6b7a;
-    --line: #e5ddd2;
-    --green: #22c55e;
-  }
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-  html { scroll-behavior: smooth; }
-  body { font-family: 'Inter', sans-serif; color: var(--ink); background: var(--cream); line-height: 1.6; }
-  h1, h2, h3 { font-family: 'Sora', sans-serif; line-height: 1.15; }
-  .wrap { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
-  section { padding: 88px 0; }
+:root{
+  --navy:#0d1b2a;
+  --navy-2:#13253a;
+  --navy-3:#1b3350;
+  --ink:#1c2733;
+  --paper:#faf6f0;
+  --paper-2:#f3ede3;
+  --line:#e5dccd;
+  --orange:#e8590c;
+  --orange-dark:#c74a08;
+  --white-warm:#fdfbf7;
+  --muted:#5c6b7a;
+  --muted-light:#9fb0c1;
+  --radius:14px;
+  --display:"Big Shoulders", Impact, sans-serif;
+  --body:"Spline Sans", Helvetica, Arial, sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{font-family:var(--body);color:var(--ink);background:var(--paper);line-height:1.6;font-size:17px}
+h1,h2,h3{font-family:var(--display);line-height:1.02;text-transform:uppercase;letter-spacing:.01em;color:var(--navy)}
+img{max-width:100%}
+a{color:inherit}
+.wrap{width:min(1120px,100%);margin:0 auto;padding:0 20px}
+.eyebrow{display:inline-block;font-family:var(--body);font-size:13px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--orange);margin-bottom:14px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;font-family:var(--body);font-weight:700;font-size:16px;text-decoration:none;border:none;cursor:pointer;border-radius:10px;padding:15px 28px;transition:transform .15s ease,box-shadow .15s ease,background .15s ease;min-height:48px}
+.btn-orange{background:var(--orange);color:#fff;box-shadow:0 4px 14px rgba(232,89,12,.35)}
+.btn-orange:hover{background:var(--orange-dark);transform:translateY(-2px);box-shadow:0 8px 22px rgba(232,89,12,.4)}
+.btn-orange:active{transform:translateY(0)}
+.btn-ghost{background:transparent;color:var(--navy);border:2px solid var(--navy);padding:13px 26px}
+.btn-ghost:hover{background:var(--navy);color:#fff}
 
-  /* ---- Nav ---- */
-  nav { position: sticky; top: 0; z-index: 50; background: rgba(250,246,240,.92); backdrop-filter: blur(8px); border-bottom: 1px solid var(--line); }
-  .nav-inner { display: flex; align-items: center; justify-content: space-between; height: 64px; }
-  .logo { font-family: 'Sora', sans-serif; font-weight: 800; font-size: 1.25rem; color: var(--navy); text-decoration: none; }
-  .logo span { color: var(--orange); }
-  .nav-links { display: flex; gap: 28px; align-items: center; }
-  .nav-links a { color: var(--muted); text-decoration: none; font-weight: 500; font-size: .95rem; }
-  .nav-links a:hover { color: var(--navy); }
-  .btn { display: inline-block; background: var(--orange); color: #fff !important; font-weight: 600; padding: 12px 24px; border-radius: 10px; text-decoration: none; border: none; cursor: pointer; font-size: 1rem; font-family: 'Inter', sans-serif; transition: background .15s; }
-  .btn:hover { background: var(--orange-dark); }
-  .btn-big { padding: 16px 34px; font-size: 1.1rem; }
+/* ---------- Nav ---------- */
+.nav{position:sticky;top:0;z-index:100;background:rgba(250,246,240,.92);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid var(--line);transition:box-shadow .2s}
+.nav.scrolled{box-shadow:0 2px 18px rgba(13,27,42,.08)}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;height:66px}
+.logo{display:flex;align-items:center;gap:9px;text-decoration:none}
+.logo-mark{width:34px;height:34px;border-radius:9px;background:var(--navy);display:grid;place-items:center;flex-shrink:0}
+.logo-mark span{width:14px;height:14px;border:3px solid var(--orange);border-radius:50%;border-bottom-color:transparent;transform:rotate(45deg);display:block}
+.logo-text{font-family:var(--display);font-weight:800;font-size:23px;text-transform:uppercase;color:var(--navy);letter-spacing:.02em}
+.logo-text em{font-style:normal;color:var(--orange)}
+.nav-links{display:none;align-items:center;gap:30px;list-style:none}
+.nav-links a{text-decoration:none;font-weight:600;font-size:15px;color:var(--ink);position:relative;padding:4px 0}
+.nav-links a::after{content:"";position:absolute;left:0;bottom:0;width:0;height:2px;background:var(--orange);transition:width .2s}
+.nav-links a:hover::after{width:100%}
+.nav-cta{padding:11px 20px;font-size:15px;min-height:42px}
+.nav-right{display:flex;align-items:center;gap:12px}
+.burger{display:grid;place-items:center;width:44px;height:44px;background:none;border:none;cursor:pointer;gap:0}
+.burger span{display:block;width:22px;height:2.5px;background:var(--navy);margin:2.5px 0;border-radius:2px;transition:.25s}
+.burger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.burger.open span:nth-child(2){opacity:0}
+.burger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+.mobile-menu{display:none;flex-direction:column;gap:4px;padding:10px 20px 20px;border-top:1px solid var(--line);background:var(--paper)}
+.mobile-menu.open{display:flex}
+.mobile-menu a{text-decoration:none;font-weight:600;font-size:17px;padding:13px 4px;border-bottom:1px solid var(--line)}
+.mobile-menu a:last-child{border-bottom:none}
 
-  /* ---- Hero ---- */
-  header.hero { background: var(--navy); color: #fff; padding: 96px 0 110px; position: relative; overflow: hidden; }
-  .hero-grid { display: grid; grid-template-columns: 1.15fr .85fr; gap: 56px; align-items: center; }
-  .kicker { display: inline-block; background: rgba(255,122,26,.15); color: var(--orange); font-weight: 600; font-size: .85rem; letter-spacing: .06em; text-transform: uppercase; padding: 6px 14px; border-radius: 99px; margin-bottom: 20px; }
-  .hero h1 { font-size: clamp(2.1rem, 4.5vw, 3.3rem); font-weight: 800; margin-bottom: 20px; }
-  .hero h1 em { color: var(--orange); font-style: normal; }
-  .hero p.sub { color: #b8c4d0; font-size: 1.15rem; max-width: 34rem; margin-bottom: 32px; }
-  .hero-ctas { display: flex; gap: 16px; flex-wrap: wrap; align-items: center; }
-  .ghost { color: #fff; text-decoration: none; font-weight: 600; padding: 16px 10px; }
-  .ghost:hover { color: var(--orange); }
-  .stat-row { display: flex; gap: 36px; margin-top: 44px; }
-  .stat b { font-family: 'Sora', sans-serif; font-size: 1.5rem; display: block; color: var(--orange); }
-  .stat span { color: #8fa0b0; font-size: .85rem; }
+/* ---------- Hero ---------- */
+.hero{background:var(--navy);color:var(--white-warm);position:relative;overflow:hidden}
+.hero::before{content:"";position:absolute;inset:0;background:
+  radial-gradient(ellipse 60% 50% at 85% 10%,rgba(232,89,12,.14),transparent 60%),
+  repeating-linear-gradient(-45deg,rgba(255,255,255,.014) 0 2px,transparent 2px 14px)}
+.hero-inner{position:relative;display:grid;gap:48px;padding-block:64px 72px}
+.hero h1{color:#fff;font-size:clamp(44px,9.5vw,84px);font-weight:800;max-width:11ch}
+.hero h1 em{font-style:normal;color:var(--orange)}
+.hero-sub{font-size:clamp(17px,2.4vw,20px);color:var(--muted-light);max-width:46ch;margin:20px 0 30px}
+.hero-sub strong{color:#fff;font-weight:600}
+.hero-actions{display:flex;flex-wrap:wrap;gap:14px;align-items:center}
+.hero-note{font-size:14px;color:var(--muted-light);margin-top:16px;display:flex;align-items:center;gap:8px}
+.hero-note::before{content:"";width:7px;height:7px;border-radius:50%;background:#3fbf6f;box-shadow:0 0 8px #3fbf6f;flex-shrink:0}
 
-  /* ---- Phone mockup ---- */
-  .phone { background: #101820; border: 3px solid #2a3948; border-radius: 34px; padding: 18px 14px; width: 320px; margin-left: auto; box-shadow: 0 30px 60px rgba(0,0,0,.45); }
-  .phone-top { text-align: center; color: #8fa0b0; font-size: .78rem; padding-bottom: 12px; border-bottom: 1px solid #223142; margin-bottom: 12px; }
-  .phone-top b { display: block; color: #fff; font-size: .95rem; }
-  .bubbles { display: flex; flex-direction: column; gap: 10px; min-height: 320px; }
-  .bubble { max-width: 82%; padding: 10px 14px; border-radius: 16px; font-size: .86rem; opacity: 0; transform: translateY(8px); animation: pop .4s forwards; }
-  .from-biz { background: #1f3247; color: #e6eef6; align-self: flex-start; border-bottom-left-radius: 4px; }
-  .from-cust { background: var(--orange); color: #fff; align-self: flex-end; border-bottom-right-radius: 4px; }
-  @keyframes pop { to { opacity: 1; transform: translateY(0); } }
-  .bubble:nth-child(1) { animation-delay: .4s; }
-  .bubble:nth-child(2) { animation-delay: 1.5s; }
-  .bubble:nth-child(3) { animation-delay: 2.6s; }
-  .bubble:nth-child(4) { animation-delay: 3.7s; }
-  .bubble:nth-child(5) { animation-delay: 4.8s; }
-  .bubble:nth-child(6) { animation-delay: 5.9s; }
+/* ---------- Phone mockup ---------- */
+.phone-col{display:flex;justify-content:center}
+.phone{width:min(340px,88vw);background:#0a0a0c;border-radius:44px;padding:11px;box-shadow:0 30px 70px rgba(0,0,0,.5),0 0 0 1px rgba(255,255,255,.09);position:relative}
+.phone-screen{background:#f4f4f6;border-radius:34px;overflow:hidden;height:600px;display:flex;flex-direction:column}
+.phone-notch{position:absolute;top:11px;left:50%;transform:translateX(-50%);width:110px;height:26px;background:#0a0a0c;border-radius:0 0 16px 16px;z-index:3}
+.sms-header{background:rgba(248,248,250,.95);padding:38px 16px 10px;text-align:center;border-bottom:1px solid #e0e0e4;flex-shrink:0}
+.sms-avatar{width:42px;height:42px;border-radius:50%;background:var(--navy);color:#fff;font-family:var(--display);font-weight:700;font-size:17px;display:grid;place-items:center;margin:0 auto 4px}
+.sms-name{font-size:12px;color:#111;font-weight:600}
+.sms-name small{display:block;color:#8a8a8e;font-weight:400;font-size:10px}
+.sms-body{flex:1;padding:14px 12px;display:flex;flex-direction:column;gap:9px;overflow:hidden;justify-content:flex-end}
+.sms-time{text-align:center;font-size:10.5px;color:#8a8a8e;font-weight:500}
+.sms-missed{align-self:center;background:#ffe9e7;color:#c0392b;font-size:11.5px;font-weight:600;padding:6px 14px;border-radius:20px;display:flex;align-items:center;gap:6px}
+.bubble{max-width:78%;padding:9px 13px;border-radius:18px;font-size:14px;line-height:1.42;opacity:0;transform:translateY(14px) scale(.96)}
+.bubble.show{opacity:1;transform:none;transition:opacity .35s ease,transform .35s cubic-bezier(.2,.9,.3,1.2)}
+.bubble.in{align-self:flex-start;background:#e9e9eb;color:#111;border-bottom-left-radius:5px}
+.bubble.out{align-self:flex-end;background:#3d7bfb;color:#fff;border-bottom-right-radius:5px}
+.bubble .b-label{display:block;font-size:9.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;opacity:.65;margin-bottom:2px}
+.typing{align-self:flex-start;background:#e9e9eb;border-radius:18px;border-bottom-left-radius:5px;padding:12px 15px;display:none;gap:4px}
+.typing.show{display:flex}
+.typing i{width:7px;height:7px;border-radius:50%;background:#9a9aa0;animation:tblink 1.2s infinite}
+.typing i:nth-child(2){animation-delay:.2s}
+.typing i:nth-child(3){animation-delay:.4s}
+@keyframes tblink{0%,60%,100%{opacity:.3;transform:translateY(0)}30%{opacity:1;transform:translateY(-3px)}}
+.sms-booked{align-self:center;background:#e3f5e9;color:#1e7a44;font-size:11.5px;font-weight:700;padding:7px 15px;border-radius:20px;opacity:0;transform:scale(.9)}
+.sms-booked.show{opacity:1;transform:scale(1);transition:.4s cubic-bezier(.2,.9,.3,1.3)}
 
-  /* ---- Sections ---- */
-  .sec-head { text-align: center; max-width: 44rem; margin: 0 auto 56px; }
-  .sec-head h2 { font-size: clamp(1.7rem, 3vw, 2.4rem); color: var(--navy); margin-bottom: 14px; }
-  .sec-head p { color: var(--muted); font-size: 1.05rem; }
+/* ---------- Sections ---------- */
+section{padding:78px 0}
+.sec-head{max-width:640px;margin-bottom:48px}
+.sec-head h2{font-size:clamp(34px,6.5vw,54px);font-weight:800}
+.sec-head p{color:var(--muted);margin-top:14px;font-size:18px}
 
-  .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; }
-  .step { background: #fff; border: 1px solid var(--line); border-radius: 16px; padding: 32px 26px; }
-  .step .num { font-family: 'Sora', sans-serif; font-weight: 800; font-size: .9rem; color: var(--orange); letter-spacing: .08em; margin-bottom: 12px; }
-  .step h3 { font-size: 1.15rem; color: var(--navy); margin-bottom: 10px; }
-  .step p { color: var(--muted); font-size: .95rem; }
+/* reveal */
+.reveal{opacity:0;transform:translateY(26px);transition:opacity .6s ease,transform .6s ease}
+.reveal.vis{opacity:1;transform:none}
+.reveal.d1{transition-delay:.08s}.reveal.d2{transition-delay:.16s}.reveal.d3{transition-delay:.24s}
+.reveal.d4{transition-delay:.32s}.reveal.d5{transition-delay:.4s}
 
-  .features { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
-  .feat { background: #fff; border: 1px solid var(--line); border-radius: 14px; padding: 24px 22px; }
-  .feat .ico { font-size: 1.5rem; margin-bottom: 10px; display: block; }
-  .feat h3 { font-size: 1.02rem; color: var(--navy); margin-bottom: 6px; }
-  .feat p { color: var(--muted); font-size: .9rem; }
+/* ---------- How it works ---------- */
+.steps{display:grid;gap:20px}
+.step{background:var(--white-warm);border:1px solid var(--line);border-radius:var(--radius);padding:32px 28px;position:relative;transition:transform .2s,box-shadow .2s}
+.step:hover{transform:translateY(-4px);box-shadow:0 14px 34px rgba(13,27,42,.1)}
+.step-num{font-family:var(--display);font-weight:800;font-size:58px;color:var(--paper-2);-webkit-text-stroke:2px var(--orange);color:transparent;line-height:1;margin-bottom:16px}
+.step h3{font-size:26px;margin-bottom:10px}
+.step p{color:var(--muted);font-size:16px}
 
-  /* ---- Pricing ---- */
-  #pricing { background: var(--navy); }
-  #pricing .sec-head h2, #pricing .sec-head p { color: #fff; }
-  #pricing .sec-head p { color: #b8c4d0; }
-  .price-card { background: #fff; border-radius: 20px; max-width: 460px; margin: 0 auto; padding: 44px 40px; text-align: center; box-shadow: 0 24px 60px rgba(0,0,0,.35); }
-  .price-card .plan { font-weight: 600; color: var(--orange); text-transform: uppercase; letter-spacing: .08em; font-size: .85rem; }
-  .price-card .amount { font-family: 'Sora', sans-serif; font-size: 3.2rem; font-weight: 800; color: var(--navy); margin: 10px 0 2px; }
-  .price-card .amount small { font-size: 1.1rem; color: var(--muted); font-weight: 500; }
-  .price-card .setup { color: var(--muted); margin-bottom: 26px; }
-  .price-card ul { list-style: none; text-align: left; margin-bottom: 30px; }
-  .price-card li { padding: 9px 0 9px 30px; position: relative; color: var(--ink); font-size: .96rem; border-bottom: 1px dashed var(--line); }
-  .price-card li:last-child { border-bottom: none; }
-  .price-card li::before { content: "✓"; position: absolute; left: 4px; color: var(--green); font-weight: 700; }
-  .guarantee { color: #8fa0b0; font-size: .85rem; text-align: center; margin-top: 22px; }
+/* ---------- Features ---------- */
+.features-sec{background:var(--navy);color:var(--white-warm)}
+.features-sec .sec-head h2{color:#fff}
+.features-sec .sec-head p{color:var(--muted-light)}
+.features{display:grid;gap:18px}
+.feat{background:var(--navy-2);border:1px solid rgba(255,255,255,.08);border-radius:var(--radius);padding:28px 26px;transition:transform .2s,border-color .2s,background .2s}
+.feat:hover{transform:translateY(-4px);border-color:rgba(232,89,12,.55);background:var(--navy-3)}
+.feat-icon{width:46px;height:46px;border-radius:11px;background:rgba(232,89,12,.14);display:grid;place-items:center;margin-bottom:18px}
+.feat-icon svg{width:23px;height:23px;stroke:var(--orange);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.feat h3{color:#fff;font-size:23px;margin-bottom:8px}
+.feat p{color:var(--muted-light);font-size:15.5px}
 
-  /* ---- FAQ ---- */
-  .faq-list { max-width: 720px; margin: 0 auto; }
-  details { background: #fff; border: 1px solid var(--line); border-radius: 12px; margin-bottom: 12px; padding: 0 22px; }
-  summary { cursor: pointer; font-weight: 600; color: var(--navy); padding: 18px 0; list-style: none; position: relative; padding-right: 30px; }
-  summary::after { content: "+"; position: absolute; right: 2px; top: 14px; font-size: 1.4rem; color: var(--orange); transition: transform .2s; }
-  details[open] summary::after { transform: rotate(45deg); }
-  details p { color: var(--muted); padding-bottom: 18px; font-size: .95rem; }
+/* ---------- Pricing ---------- */
+.price-card{background:var(--white-warm);border:2px solid var(--navy);border-radius:20px;max-width:520px;margin:0 auto;overflow:hidden;box-shadow:0 24px 60px rgba(13,27,42,.12)}
+.price-top{background:var(--navy);color:#fff;padding:34px 32px;text-align:center}
+.price-top .plan-name{font-family:var(--body);font-size:13px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--orange)}
+.price-amount{font-family:var(--display);font-weight:800;font-size:76px;line-height:1;margin:12px 0 2px;color:#fff}
+.price-amount sup{font-size:30px;top:-32px;position:relative}
+.price-amount small{font-family:var(--body);font-size:17px;font-weight:500;color:var(--muted-light)}
+.price-setup{color:var(--muted-light);font-size:15px}
+.price-setup strong{color:#fff}
+.price-body{padding:32px}
+.price-list{list-style:none;display:grid;gap:13px;margin-bottom:26px}
+.price-list li{display:flex;gap:12px;align-items:flex-start;font-size:16px}
+.price-list li::before{content:"";flex-shrink:0;width:21px;height:21px;margin-top:2px;border-radius:50%;background:var(--orange);background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='3.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 13l4 4L19 7'/%3E%3C/svg%3E");background-size:12px;background-position:center;background-repeat:no-repeat}
+.guarantee{background:var(--paper-2);border:1px dashed var(--orange);border-radius:12px;padding:16px 18px;font-size:15px;margin-bottom:26px;display:flex;gap:12px;align-items:flex-start}
+.guarantee svg{width:26px;height:26px;flex-shrink:0;stroke:var(--orange);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;margin-top:1px}
+.guarantee strong{color:var(--navy)}
+.price-body .btn{width:100%}
+.price-fine{text-align:center;font-size:13.5px;color:var(--muted);margin-top:14px}
 
-  /* ---- Contact ---- */
-  .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: start; }
-  .contact-copy h2 { font-size: 2rem; color: var(--navy); margin-bottom: 16px; }
-  .contact-copy p { color: var(--muted); margin-bottom: 18px; }
-  form { background: #fff; border: 1px solid var(--line); border-radius: 16px; padding: 30px; }
-  label { display: block; font-weight: 600; font-size: .88rem; margin: 14px 0 6px; color: var(--navy); }
-  input, textarea, select { width: 100%; padding: 12px 14px; border: 1px solid var(--line); border-radius: 10px; font-family: 'Inter', sans-serif; font-size: .95rem; background: var(--cream); }
-  input:focus, textarea:focus, select:focus { outline: 2px solid var(--orange); border-color: transparent; }
-  form .btn { width: 100%; margin-top: 22px; }
+/* ---------- FAQ ---------- */
+.faq-sec{background:var(--paper-2)}
+.faq{max-width:760px;margin:0 auto;display:grid;gap:12px}
+.faq details{background:var(--white-warm);border:1px solid var(--line);border-radius:12px;overflow:hidden;transition:border-color .2s}
+.faq details[open]{border-color:var(--orange)}
+.faq summary{cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:16px;padding:20px 22px;font-weight:700;font-size:17px;color:var(--navy);min-height:48px}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";font-family:var(--display);font-size:28px;font-weight:700;color:var(--orange);line-height:1;transition:transform .25s;flex-shrink:0}
+.faq details[open] summary::after{transform:rotate(45deg)}
+.faq .faq-a{padding:0 22px 22px;color:var(--muted);font-size:16px}
+.faq .faq-a strong{color:var(--ink)}
 
-  footer { background: var(--navy-2); color: #8fa0b0; padding: 36px 0; font-size: .88rem; }
-  .foot-inner { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; }
-  footer a { color: #b8c4d0; }
+/* ---------- Contact ---------- */
+.contact-sec{background:var(--navy);color:var(--white-warm)}
+.contact-grid{display:grid;gap:44px}
+.contact-copy h2{color:#fff;font-size:clamp(34px,6.5vw,52px);font-weight:800}
+.contact-copy p{color:var(--muted-light);margin-top:16px;font-size:17.5px;max-width:42ch}
+.contact-points{list-style:none;margin-top:28px;display:grid;gap:14px}
+.contact-points li{display:flex;gap:12px;align-items:flex-start;color:#dce6f0;font-size:16px}
+.contact-points li::before{content:"→";color:var(--orange);font-weight:700;flex-shrink:0}
+.form-card{background:var(--white-warm);border-radius:18px;padding:32px 26px;color:var(--ink);box-shadow:0 24px 60px rgba(0,0,0,.3)}
+.form-card h3{font-size:26px;margin-bottom:20px}
+.field{margin-bottom:16px}
+.field label{display:block;font-size:13.5px;font-weight:700;margin-bottom:6px;color:var(--navy);letter-spacing:.02em}
+.field input,.field textarea{width:100%;font-family:var(--body);font-size:16px;padding:13px 14px;border:1.5px solid var(--line);border-radius:10px;background:#fff;color:var(--ink);transition:border-color .15s,box-shadow .15s;min-height:48px}
+.field textarea{min-height:110px;resize:vertical}
+.field input:focus,.field textarea:focus{outline:none;border-color:var(--orange);box-shadow:0 0 0 3px rgba(232,89,12,.15)}
+.form-card .btn{width:100%;margin-top:6px}
+.form-fine{font-size:13px;color:var(--muted);text-align:center;margin-top:12px}
 
-  @media (max-width: 860px) {
-    .hero-grid, .contact-grid { grid-template-columns: 1fr; }
-    .phone { margin: 0 auto; }
-    .steps, .features { grid-template-columns: 1fr; }
-    .nav-links a:not(.btn) { display: none; }
-    section { padding: 64px 0; }
-  }
+/* ---------- Footer ---------- */
+footer{background:#091320;color:var(--muted-light);padding:44px 0 36px;font-size:14.5px}
+.foot-inner{display:flex;flex-direction:column;gap:22px}
+.foot-top{display:flex;flex-wrap:wrap;gap:20px;justify-content:space-between;align-items:center}
+.foot-links{display:flex;flex-wrap:wrap;gap:22px;list-style:none}
+.foot-links a{text-decoration:none;color:var(--muted-light);transition:color .15s}
+.foot-links a:hover{color:#fff}
+.foot-bottom{border-top:1px solid rgba(255,255,255,.09);padding-top:20px;display:flex;flex-wrap:wrap;gap:10px;justify-content:space-between;font-size:13px;color:#647689}
+
+/* ---------- Desktop ---------- */
+@media(min-width:760px){
+  .nav-links{display:flex}
+  .burger{display:none}
+  .hero-inner{grid-template-columns:1.1fr .9fr;align-items:center;padding-block:90px 100px}
+  .steps{grid-template-columns:repeat(3,1fr)}
+  .features{grid-template-columns:repeat(2,1fr)}
+  .contact-grid{grid-template-columns:1fr 1fr;align-items:start}
+  .form-card{padding:38px 36px}
+}
+@media(min-width:1000px){
+  .features{grid-template-columns:repeat(3,1fr)}
+}
+@media(prefers-reduced-motion:reduce){
+  *{animation-duration:.01ms!important;transition-duration:.01ms!important}
+  html{scroll-behavior:auto}
+  .reveal{opacity:1;transform:none}
+}
 </style>
 </head>
 <body>
 
-<nav>
+<!-- ============ NAV ============ -->
+<header class="nav" id="nav">
   <div class="wrap nav-inner">
-    <a class="logo" href="#">Call<span>Catch</span> AI</a>
-    <div class="nav-links">
-      <a href="#how">How it works</a>
-      <a href="#features">Features</a>
-      <a href="#pricing">Pricing</a>
-      <a href="#faq">FAQ</a>
-      <a class="btn" href="#contact">Get started</a>
+    <a href="#" class="logo" aria-label="CallCatch AI home">
+      <span class="logo-mark"><span></span></span>
+      <span class="logo-text">CallCatch <em>AI</em></span>
+    </a>
+    <nav aria-label="Main">
+      <ul class="nav-links">
+        <li><a href="#how">How it works</a></li>
+        <li><a href="#features">Features</a></li>
+        <li><a href="#pricing">Pricing</a></li>
+        <li><a href="#faq">FAQ</a></li>
+      </ul>
+    </nav>
+    <div class="nav-right">
+      <a href="#contact" class="btn btn-orange nav-cta">Get started</a>
+      <button class="burger" id="burger" aria-label="Menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
     </div>
   </div>
-</nav>
-
-<header class="hero">
-  <div class="wrap hero-grid">
-    <div>
-      <span class="kicker">For plumbers, electricians, HVAC & every service business</span>
-      <h1>Every missed call is a job your competitor booked. <em>Catch it instead.</em></h1>
-      <p class="sub">CallCatch AI texts back every caller you miss — answers their questions, quotes your prices, and books the appointment. 24/7, even while you're under a sink.</p>
-      <div class="hero-ctas">
-        <a class="btn btn-big" href="#contact">Book a free live demo</a>
-        <a class="ghost" href="#how">See how it works ↓</a>
-      </div>
-      <div class="stat-row">
-        <div class="stat"><b>62%</b><span>of calls to small trades<br>go unanswered*</span></div>
-        <div class="stat"><b>&lt;5 sec</b><span>average response<br>time by text</span></div>
-        <div class="stat"><b>24/7</b><span>nights, weekends,<br>holidays included</span></div>
-      </div>
-    </div>
-    <div class="phone">
-      <div class="phone-top"><b>Miller's Plumbing</b>Text message · now</div>
-      <div class="bubbles">
-        <div class="bubble from-biz">Sorry we missed you! I'm the AI assistant for Miller's Plumbing — how can I help?</div>
-        <div class="bubble from-cust">My water heater died 😩 how much to replace?</div>
-        <div class="bubble from-biz">Sorry to hear that! A tank water heater replacement is estimated at $1,200–$2,500 installed, confirmed on site. Want me to get someone out to you?</div>
-        <div class="bubble from-cust">Yes please, tomorrow morning?</div>
-        <div class="bubble from-biz">Can do! What's your name and address? I'll pass everything to Dave and he'll confirm your time.</div>
-        <div class="bubble from-cust">John, 412 Oak St. Thank you!! 🙏</div>
-      </div>
-    </div>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#how">How it works</a>
+    <a href="#features">Features</a>
+    <a href="#pricing">Pricing</a>
+    <a href="#faq">FAQ</a>
   </div>
 </header>
 
+<!-- ============ HERO ============ -->
+<div class="hero">
+  <div class="wrap hero-inner">
+    <div>
+      <span class="eyebrow">For plumbers, electricians, HVAC &amp; cleaning pros</span>
+      <h1>Every missed call is a job your <em>competitor</em> gets.</h1>
+      <p class="hero-sub">You're under a house. On a roof. Elbow-deep in a job. The phone rings, you miss it — and that customer calls the next guy. <strong>CallCatch AI texts them back in seconds,</strong> answers their questions with your prices and hours, and books the job. 24/7, on your existing number.</p>
+      <div class="hero-actions">
+        <a href="#contact" class="btn btn-orange">Book a free live demo</a>
+        <a href="#how" class="btn btn-ghost" style="border-color:rgba(255,255,255,.4);color:#fff">See how it works</a>
+      </div>
+      <p class="hero-note">No new number. No app for your customers. Live within a week.</p>
+    </div>
+    <div class="phone-col">
+      <div class="phone" id="phone" aria-label="Example text conversation: CallCatch AI texts back a missed call, quotes a water heater replacement, and books the appointment">
+        <div class="phone-notch"></div>
+        <div class="phone-screen">
+          <div class="sms-header">
+            <div class="sms-avatar">DP</div>
+            <div class="sms-name">Dave's Plumbing<small>Text Message</small></div>
+          </div>
+          <div class="sms-body" id="smsBody">
+            <div class="sms-time">Today 2:14 PM</div>
+            <div class="sms-missed">&#128222; Missed call from (614) 555-0187</div>
+            <div class="bubble out" data-step="1"><span class="b-label">CallCatch AI · instant</span>Hi, this is Dave's Plumbing. Sorry we missed your call! How can we help?</div>
+            <div class="bubble in" data-step="2">How much to replace a 50 gallon water heater?</div>
+            <div class="bubble out" data-step="3"><span class="b-label">CallCatch AI</span>Most 50-gal replacements run <b>$1,200–$2,500</b> installed, depending on the unit. Want us to come out and give you an exact quote?</div>
+            <div class="bubble in" data-step="4">Yeah, can you do tomorrow morning?</div>
+            <div class="bubble out" data-step="5"><span class="b-label">CallCatch AI</span>You're set for <b>tomorrow at 9:00 AM</b>. Dave will text when he's on the way.</div>
+            <div class="typing" id="typing"><i></i><i></i><i></i></div>
+            <div class="sms-booked" id="booked">&#10003; Appointment booked — Thu 9:00 AM</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============ HOW IT WORKS ============ -->
 <section id="how">
   <div class="wrap">
-    <div class="sec-head">
-      <h2>Missed call → booked job, in three steps</h2>
-      <p>No new phone, no app to learn, nothing for your crew to do. It just works behind your existing number.</p>
+    <div class="sec-head reveal">
+      <span class="eyebrow">How it works</span>
+      <h2>You keep working. It catches the call.</h2>
+      <p>Nothing changes about your phone or your number. CallCatch AI just steps in when you can't pick up.</p>
     </div>
     <div class="steps">
-      <div class="step">
-        <div class="num">STEP 1</div>
-        <h3>A customer calls. You're busy.</h3>
-        <p>On a roof, in a crawlspace, on another job. The call rings out — normally, that customer calls the next company on Google.</p>
+      <div class="step reveal d1">
+        <div class="step-num">01</div>
+        <h3>A call gets missed</h3>
+        <p>You're on a job, driving, or it's 9 PM on a Saturday. The call rings through to voicemail like always.</p>
       </div>
-      <div class="step">
-        <div class="num">STEP 2</div>
-        <h3>They get a text in seconds</h3>
-        <p>"Sorry we missed you!" — your AI assistant introduces itself and asks how it can help. Most customers reply within a minute.</p>
+      <div class="step reveal d2">
+        <div class="step-num">02</div>
+        <h3>Instant text-back</h3>
+        <p>Within seconds, the caller gets a text from your business number. Most people reply — because nobody wants to call the next plumber either.</p>
       </div>
-      <div class="step">
-        <div class="num">STEP 3</div>
-        <h3>It answers &amp; books the job</h3>
-        <p>Trained ONLY on your services, prices, and hours. It quotes estimates, books appointments into your calendar, and texts you anything it can't answer.</p>
+      <div class="step reveal d3">
+        <div class="step-num">03</div>
+        <h3>AI answers &amp; books</h3>
+        <p>It answers questions using your services, prices, hours, and service area — then books the appointment straight into your calendar.</p>
       </div>
     </div>
   </div>
 </section>
 
-<section id="features" style="padding-top:0">
+<!-- ============ FEATURES ============ -->
+<section class="features-sec" id="features">
   <div class="wrap">
-    <div class="sec-head">
-      <h2>Built for how service businesses actually work</h2>
+    <div class="sec-head reveal">
+      <span class="eyebrow">What it does</span>
+      <h2>Built for the trades. Not a chatbot toy.</h2>
+      <p>Every answer comes from your business info — nothing made up, nothing off-script.</p>
     </div>
     <div class="features">
-      <div class="feat"><span class="ico">🔒</span><h3>Never makes things up</h3><p>Answers only from YOUR business info — your prices, your hours, your service area. Anything else gets forwarded to you.</p></div>
-      <div class="feat"><span class="ico">📅</span><h3>Books real appointments</h3><p>Connects to your Google Calendar, offers open slots, and creates the booking — or texts you the request to confirm.</p></div>
-      <div class="feat"><span class="ico">📲</span><h3>You stay in control</h3><p>Questions it can't answer come straight to your phone with the customer's number. You call back, you close.</p></div>
-      <div class="feat"><span class="ico">🕐</span><h3>Works nights &amp; weekends</h3><p>2 AM burst pipe? The AI responds instantly, captures the job details, and flags it as an emergency for you.</p></div>
-      <div class="feat"><span class="ico">📝</span><h3>Every conversation logged</h3><p>Full transcripts of every text conversation, so you always know what was said and promised.</p></div>
-      <div class="feat"><span class="ico">☎️</span><h3>Keep your number</h3><p>Works alongside your existing business line with simple call forwarding. Your customers notice nothing — except that you always reply.</p></div>
+      <div class="feat reveal">
+        <div class="feat-icon"><svg viewBox="0 0 24 24"><path d="M12 3l8 4v5c0 5-3.5 8-8 9-4.5-1-8-4-8-9V7l8-4z"/><path d="M9 12l2 2 4-4"/></svg></div>
+        <h3>Never invents answers</h3>
+        <p>It only uses YOUR info — your services, your prices, your hours, your service area. If it's not in your setup, it doesn't say it.</p>
+      </div>
+      <div class="feat reveal d1">
+        <div class="feat-icon"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M8 3v4M16 3v4M3 10h18M9 15l2 2 4-4"/></svg></div>
+        <h3>Books real appointments</h3>
+        <p>Not "someone will call you back." It offers real time slots and locks in the job while the customer is still interested.</p>
+      </div>
+      <div class="feat reveal d2">
+        <div class="feat-icon"><svg viewBox="0 0 24 24"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.13.96.36 1.9.7 2.8a2 2 0 0 1-.45 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.45c.9.34 1.84.57 2.8.7a2 2 0 0 1 1.7 2.05z"/></svg></div>
+        <h3>Hard questions go to you</h3>
+        <p>Anything it can't answer gets forwarded to your phone right away — with the full conversation, so you're not starting cold.</p>
+      </div>
+      <div class="feat reveal d3">
+        <div class="feat-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></svg></div>
+        <h3>Works nights &amp; weekends</h3>
+        <p>Burst pipes don't wait for Monday. It answers at 2 AM the same as 2 PM — while your competitors' phones go to voicemail.</p>
+      </div>
+      <div class="feat reveal d4">
+        <div class="feat-icon"><svg viewBox="0 0 24 24"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9l-6-6z"/><path d="M14 3v6h6M9 14h6M9 17h4"/></svg></div>
+        <h3>Every conversation logged</h3>
+        <p>See every text, every quote, every booking in one place. Know exactly what was said to every customer.</p>
+      </div>
+      <div class="feat reveal d5">
+        <div class="feat-icon"><svg viewBox="0 0 24 24"><rect x="7" y="2" width="10" height="20" rx="2.5"/><path d="M11 18.5h2"/></svg></div>
+        <h3>Keep your existing number</h3>
+        <p>No new number, no porting, no forwarding tricks your customers notice. It works behind the number on your truck.</p>
+      </div>
     </div>
   </div>
 </section>
 
+<!-- ============ PRICING ============ -->
 <section id="pricing">
   <div class="wrap">
-    <div class="sec-head">
-      <h2>Simple pricing. One plan. Everything included.</h2>
-      <p>Less than the profit on a single service call per month.</p>
+    <div class="sec-head reveal" style="text-align:center;margin-left:auto;margin-right:auto">
+      <span class="eyebrow">Pricing</span>
+      <h2>One plan. No surprises.</h2>
+      <p>One missed water-heater job pays for the whole year.</p>
     </div>
-    <div class="price-card">
-      <div class="plan">CallCatch Complete</div>
-      <div class="amount">$99<small>/month</small></div>
-      <div class="setup">+ $497 one-time white-glove setup</div>
-      <ul>
-        <li>Missed-call text-back on your business number</li>
-        <li>AI receptionist trained on your business</li>
-        <li>Appointment booking (calendar included)</li>
-        <li>Owner forwarding for tricky questions</li>
-        <li>Full conversation logs</li>
-        <li>Carrier compliance registration handled for you</li>
-        <li>Updates to your prices/services anytime — free</li>
-        <li>Cancel anytime, no contract</li>
-      </ul>
-      <a class="btn btn-big" href="#contact">Get started</a>
-      <div class="guarantee">Setup fee refunded if you're not live within 14 days.</div>
+    <div class="price-card reveal">
+      <div class="price-top">
+        <div class="plan-name">CallCatch AI — Everything included</div>
+        <div class="price-amount"><sup>$</sup>99<small>/month</small></div>
+        <div class="price-setup">+ <strong>$497</strong> one-time setup</div>
+      </div>
+      <div class="price-body">
+        <ul class="price-list">
+          <li>Instant text-back on every missed call, 24/7</li>
+          <li>AI trained only on your services, prices &amp; hours</li>
+          <li>Appointment booking into your calendar</li>
+          <li>Hard questions forwarded to your phone</li>
+          <li>Full conversation log &amp; monthly report</li>
+          <li>Works behind your existing business number</li>
+          <li>Carrier compliance registration handled for you</li>
+        </ul>
+        <div class="guarantee">
+          <svg viewBox="0 0 24 24"><path d="M12 3l8 4v5c0 5-3.5 8-8 9-4.5-1-8-4-8-9V7l8-4z"/><path d="M9 12l2 2 4-4"/></svg>
+          <div><strong>Our guarantee:</strong> Setup fee refunded if you're not live within 14 days.</div>
+        </div>
+        <a href="#contact" class="btn btn-orange">Book a free live demo</a>
+        <p class="price-fine">Cancel anytime. No contract, no cancellation fee.</p>
+      </div>
     </div>
   </div>
 </section>
 
-<section id="faq">
+<!-- ============ FAQ ============ -->
+<section class="faq-sec" id="faq">
   <div class="wrap">
-    <div class="sec-head"><h2>Questions owners ask us</h2></div>
-    <div class="faq-list">
+    <div class="sec-head reveal">
+      <span class="eyebrow">FAQ</span>
+      <h2>Straight answers.</h2>
+    </div>
+    <div class="faq reveal">
       <details>
-        <summary>Do I have to change my phone number?</summary>
-        <p>No. You keep your number. We set up simple call forwarding so unanswered calls roll to your AI assistant. Answer the phone like normal — the AI only steps in when you can't.</p>
+        <summary>Do I keep my phone number?</summary>
+        <div class="faq-a">Yes. CallCatch AI works behind your existing business number — the one on your truck, your cards, and Google. Nothing changes for your customers, and you don't port or forward anything.</div>
       </details>
       <details>
-        <summary>What if the AI doesn't know the answer?</summary>
-        <p>It never guesses. If a customer asks something outside your business info, it tells them the owner will follow up and instantly texts you their question and phone number.</p>
+        <summary>What happens if the AI doesn't know the answer?</summary>
+        <div class="faq-a">It says so honestly and forwards the conversation to your phone immediately. <strong>It never guesses and never makes things up</strong> — it only answers from the business info you gave it.</div>
       </details>
       <details>
-        <summary>Can it really quote my prices?</summary>
-        <p>Yes — it quotes the price ranges you give us, always labeled as estimates confirmed on site. If you'd rather it never discuss pricing, we set it that way instead.</p>
+        <summary>Can it quote my actual prices?</summary>
+        <div class="faq-a">Yes. During setup you give us your services, price ranges, hours, and service area. The AI quotes exactly what you told it — like "$1,200–$2,500 installed depending on the unit" — and nothing else.</div>
       </details>
       <details>
-        <summary>What's the setup process?</summary>
-        <p>We collect your business details (services, prices, hours, service area) in one 30-minute call. We handle the phone setup and the US carrier compliance registration (A2P 10DLC). Most businesses are live within a week.</p>
+        <summary>What does setup look like?</summary>
+        <div class="faq-a">One 30-minute call. We collect your services, prices, hours, and service area, connect your number, and test it with you. <strong>Most businesses are live within a week</strong> — and if you're not live in 14 days, your setup fee is refunded.</div>
       </details>
       <details>
-        <summary>Is texting customers even legal?</summary>
-        <p>Yes — we register your business through the official US carrier compliance program (A2P 10DLC) as part of setup, so your texts are delivered reliably and legally. The customer texted or called you first, which is the cleanest consent there is.</p>
+        <summary>Is texting my customers even legal?</summary>
+        <div class="faq-a">Yes — when it's done right. US carriers require business texting to be registered (it's called A2P 10DLC). <strong>We handle that entire registration for you</strong> as part of setup, so your texts are compliant and actually get delivered.</div>
       </details>
       <details>
         <summary>What if I want to cancel?</summary>
-        <p>Cancel anytime with a message — no contracts, no cancellation fees. Your number and customers stay yours.</p>
+        <div class="faq-a">Cancel anytime — there's no contract and no cancellation fee. You're month to month from day one.</div>
       </details>
     </div>
   </div>
 </section>
 
-<section id="contact" style="padding-top:0">
+<!-- ============ CONTACT ============ -->
+<section class="contact-sec" id="contact">
   <div class="wrap contact-grid">
-    <div class="contact-copy">
-      <h2>See it answer YOUR business's questions — live</h2>
-      <p>Book a free 15-minute demo. We'll load your actual services and prices into the AI and let you text it yourself. No commitment, no card.</p>
-      <p style="font-weight:600;color:var(--navy)">Fill the form and we'll get back to you within one business day.</p>
+    <div class="contact-copy reveal">
+      <span class="eyebrow">Get started</span>
+      <h2>See it catch a call. Live.</h2>
+      <p>Book a free demo and we'll show CallCatch AI answering a real missed call for a business like yours — prices, booking, the whole thing. Takes 15 minutes.</p>
+      <ul class="contact-points">
+        <li>Free live demo, no pressure</li>
+        <li>Live within a week of signing up</li>
+        <li>Setup fee refunded if not live in 14 days</li>
+      </ul>
     </div>
-    <form action="https://formsubmit.co/vendoraise@gmail.com" method="POST">
-      <input type="hidden" name="_subject" value="New CallCatch AI lead!">
-      <input type="hidden" name="_captcha" value="false">
-      <input type="text" name="_honey" style="display:none">
-      <label for="name">Your name</label>
-      <input id="name" type="text" name="name" required placeholder="Mike Miller">
-      <label for="biz">Business name &amp; trade</label>
-      <input id="biz" type="text" name="business" required placeholder="Miller's Plumbing — Springfield, IL">
-      <label for="email">Email</label>
-      <input id="email" type="email" name="email" required placeholder="mike@millersplumbing.com">
-      <label for="phone">Phone</label>
-      <input id="phone" type="tel" name="phone" placeholder="+1 217 555 0123">
-      <label for="msg">Anything else?</label>
-      <textarea id="msg" name="message" rows="3" placeholder="We miss about 10 calls a week..."></textarea>
-      <button class="btn" type="submit">Book my free demo</button>
-    </form>
+    <div class="form-card reveal d1">
+      <h3>Book my free demo</h3>
+      <form action="https://formsubmit.co/vendoraise@gmail.com" method="POST">
+        <input type="hidden" name="_subject" value="New CallCatch AI lead!">
+        <input type="hidden" name="_captcha" value="false">
+        <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
+        <div class="field">
+          <label for="f-name">Your name</label>
+          <input id="f-name" type="text" name="name" required autocomplete="name" placeholder="Dave Miller">
+        </div>
+        <div class="field">
+          <label for="f-biz">Business name &amp; trade</label>
+          <input id="f-biz" type="text" name="business" required placeholder="Dave's Plumbing — plumber">
+        </div>
+        <div class="field">
+          <label for="f-email">Email</label>
+          <input id="f-email" type="email" name="email" required autocomplete="email" placeholder="dave@davesplumbing.com">
+        </div>
+        <div class="field">
+          <label for="f-phone">Phone</label>
+          <input id="f-phone" type="tel" name="phone" required autocomplete="tel" placeholder="(614) 555-0187">
+        </div>
+        <div class="field">
+          <label for="f-msg">Anything we should know?</label>
+          <textarea id="f-msg" name="message" placeholder="How many calls do you miss a week? What jobs do you want more of?"></textarea>
+        </div>
+        <button type="submit" class="btn btn-orange">Book my free demo</button>
+        <p class="form-fine">We'll reach out within one business day. No spam, ever.</p>
+      </form>
+    </div>
   </div>
 </section>
 
+<!-- ============ FOOTER ============ -->
 <footer>
   <div class="wrap foot-inner">
-    <div><b style="color:#fff">CallCatch AI</b> — Never lose a job to a missed call.</div>
-    <div>*Industry estimate for small service businesses. &nbsp;·&nbsp; <a href="#pricing">Pricing</a> · <a href="#faq">FAQ</a></div>
+    <div class="foot-top">
+      <a href="#" class="logo" aria-label="CallCatch AI home">
+        <span class="logo-mark"><span></span></span>
+        <span class="logo-text" style="color:#fff">CallCatch <em>AI</em></span>
+      </a>
+      <ul class="foot-links">
+        <li><a href="#how">How it works</a></li>
+        <li><a href="#features">Features</a></li>
+        <li><a href="#pricing">Pricing</a></li>
+        <li><a href="#faq">FAQ</a></li>
+        <li><a href="#contact">Get started</a></li>
+      </ul>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 CallCatch AI. All rights reserved.</span>
+      <span>Made for the trades, in the USA.</span>
+    </div>
   </div>
 </footer>
 
+<script>
+(function(){
+  "use strict";
+
+  /* Nav shadow on scroll */
+  var nav=document.getElementById("nav");
+  addEventListener("scroll",function(){nav.classList.toggle("scrolled",scrollY>8)},{passive:true});
+
+  /* Mobile menu */
+  var burger=document.getElementById("burger"),menu=document.getElementById("mobileMenu");
+  burger.addEventListener("click",function(){
+    var open=menu.classList.toggle("open");
+    burger.classList.toggle("open",open);
+    burger.setAttribute("aria-expanded",open);
+  });
+  menu.querySelectorAll("a").forEach(function(a){
+    a.addEventListener("click",function(){
+      menu.classList.remove("open");burger.classList.remove("open");
+      burger.setAttribute("aria-expanded","false");
+    });
+  });
+
+  /* Scroll reveals */
+  var io=new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){e.target.classList.add("vis");io.unobserve(e.target);}
+    });
+  },{threshold:.12,rootMargin:"0px 0px -40px 0px"});
+  document.querySelectorAll(".reveal").forEach(function(el){io.observe(el)});
+
+  /* Animated SMS conversation */
+  var bubbles=[].slice.call(document.querySelectorAll(".bubble")),
+      typing=document.getElementById("typing"),
+      booked=document.getElementById("booked"),
+      phone=document.getElementById("phone"),
+      reduced=matchMedia("(prefers-reduced-motion: reduce)").matches,
+      running=false;
+
+  function resetConvo(){
+    bubbles.forEach(function(b){b.classList.remove("show")});
+    booked.classList.remove("show");
+    typing.classList.remove("show");
+  }
+  function playConvo(){
+    if(running)return;running=true;
+    resetConvo();
+    /* [delayBeforeTyping, typingMs, bubbleIndex] — 'in' bubbles skip typing dots */
+    var seq=[
+      {wait:700, type:900, i:0},
+      {wait:1400,type:0,   i:1},
+      {wait:600, type:1400,i:2},
+      {wait:1500,type:0,   i:3},
+      {wait:600, type:1200,i:4},
+      {wait:800, type:0,   i:-1} /* booked pill */
+    ];
+    var t=0;
+    seq.forEach(function(s){
+      t+=s.wait;
+      if(s.type>0){
+        setTimeout(function(){typing.classList.add("show")},t);
+        t+=s.type;
+        setTimeout(function(){typing.classList.remove("show")},t);
+      }
+      (function(step){
+        setTimeout(function(){
+          if(step.i===-1){booked.classList.add("show")}
+          else{bubbles[step.i].classList.add("show")}
+        },t);
+      })(s);
+    });
+    /* loop */
+    setTimeout(function(){running=false;playConvo()},t+5000);
+  }
+  if(reduced){
+    bubbles.forEach(function(b){b.style.opacity=1;b.style.transform="none"});
+    booked.style.opacity=1;booked.style.transform="none";
+  }else{
+    var phoneIO=new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if(e.isIntersecting){playConvo();phoneIO.unobserve(phone)}
+      });
+    },{threshold:.3});
+    phoneIO.observe(phone);
+  }
+})();
+</script>
 </body>
 </html>
