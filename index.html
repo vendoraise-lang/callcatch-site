@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CallCatch AI — Never lose a job to a missed call</title>
+<meta name="description" content="CallCatch AI texts back every missed call, answers customer questions, and books appointments for your service business. 24/7, starting at $99/mo.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #0d1b2a;
+    --navy-2: #14263a;
+    --orange: #ff7a1a;
+    --orange-dark: #e56710;
+    --cream: #faf6f0;
+    --ink: #1b2733;
+    --muted: #5d6b7a;
+    --line: #e5ddd2;
+    --green: #22c55e;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Inter', sans-serif; color: var(--ink); background: var(--cream); line-height: 1.6; }
+  h1, h2, h3 { font-family: 'Sora', sans-serif; line-height: 1.15; }
+  .wrap { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
+  section { padding: 88px 0; }
+
+  /* ---- Nav ---- */
+  nav { position: sticky; top: 0; z-index: 50; background: rgba(250,246,240,.92); backdrop-filter: blur(8px); border-bottom: 1px solid var(--line); }
+  .nav-inner { display: flex; align-items: center; justify-content: space-between; height: 64px; }
+  .logo { font-family: 'Sora', sans-serif; font-weight: 800; font-size: 1.25rem; color: var(--navy); text-decoration: none; }
+  .logo span { color: var(--orange); }
+  .nav-links { display: flex; gap: 28px; align-items: center; }
+  .nav-links a { color: var(--muted); text-decoration: none; font-weight: 500; font-size: .95rem; }
+  .nav-links a:hover { color: var(--navy); }
+  .btn { display: inline-block; background: var(--orange); color: #fff !important; font-weight: 600; padding: 12px 24px; border-radius: 10px; text-decoration: none; border: none; cursor: pointer; font-size: 1rem; font-family: 'Inter', sans-serif; transition: background .15s; }
+  .btn:hover { background: var(--orange-dark); }
+  .btn-big { padding: 16px 34px; font-size: 1.1rem; }
+
+  /* ---- Hero ---- */
+  header.hero { background: var(--navy); color: #fff; padding: 96px 0 110px; position: relative; overflow: hidden; }
+  .hero-grid { display: grid; grid-template-columns: 1.15fr .85fr; gap: 56px; align-items: center; }
+  .kicker { display: inline-block; background: rgba(255,122,26,.15); color: var(--orange); font-weight: 600; font-size: .85rem; letter-spacing: .06em; text-transform: uppercase; padding: 6px 14px; border-radius: 99px; margin-bottom: 20px; }
+  .hero h1 { font-size: clamp(2.1rem, 4.5vw, 3.3rem); font-weight: 800; margin-bottom: 20px; }
+  .hero h1 em { color: var(--orange); font-style: normal; }
+  .hero p.sub { color: #b8c4d0; font-size: 1.15rem; max-width: 34rem; margin-bottom: 32px; }
+  .hero-ctas { display: flex; gap: 16px; flex-wrap: wrap; align-items: center; }
+  .ghost { color: #fff; text-decoration: none; font-weight: 600; padding: 16px 10px; }
+  .ghost:hover { color: var(--orange); }
+  .stat-row { display: flex; gap: 36px; margin-top: 44px; }
+  .stat b { font-family: 'Sora', sans-serif; font-size: 1.5rem; display: block; color: var(--orange); }
+  .stat span { color: #8fa0b0; font-size: .85rem; }
+
+  /* ---- Phone mockup ---- */
+  .phone { background: #101820; border: 3px solid #2a3948; border-radius: 34px; padding: 18px 14px; width: 320px; margin-left: auto; box-shadow: 0 30px 60px rgba(0,0,0,.45); }
+  .phone-top { text-align: center; color: #8fa0b0; font-size: .78rem; padding-bottom: 12px; border-bottom: 1px solid #223142; margin-bottom: 12px; }
+  .phone-top b { display: block; color: #fff; font-size: .95rem; }
+  .bubbles { display: flex; flex-direction: column; gap: 10px; min-height: 320px; }
+  .bubble { max-width: 82%; padding: 10px 14px; border-radius: 16px; font-size: .86rem; opacity: 0; transform: translateY(8px); animation: pop .4s forwards; }
+  .from-biz { background: #1f3247; color: #e6eef6; align-self: flex-start; border-bottom-left-radius: 4px; }
+  .from-cust { background: var(--orange); color: #fff; align-self: flex-end; border-bottom-right-radius: 4px; }
+  @keyframes pop { to { opacity: 1; transform: translateY(0); } }
+  .bubble:nth-child(1) { animation-delay: .4s; }
+  .bubble:nth-child(2) { animation-delay: 1.5s; }
+  .bubble:nth-child(3) { animation-delay: 2.6s; }
+  .bubble:nth-child(4) { animation-delay: 3.7s; }
+  .bubble:nth-child(5) { animation-delay: 4.8s; }
+  .bubble:nth-child(6) { animation-delay: 5.9s; }
+
+  /* ---- Sections ---- */
+  .sec-head { text-align: center; max-width: 44rem; margin: 0 auto 56px; }
+  .sec-head h2 { font-size: clamp(1.7rem, 3vw, 2.4rem); color: var(--navy); margin-bottom: 14px; }
+  .sec-head p { color: var(--muted); font-size: 1.05rem; }
+
+  .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; }
+  .step { background: #fff; border: 1px solid var(--line); border-radius: 16px; padding: 32px 26px; }
+  .step .num { font-family: 'Sora', sans-serif; font-weight: 800; font-size: .9rem; color: var(--orange); letter-spacing: .08em; margin-bottom: 12px; }
+  .step h3 { font-size: 1.15rem; color: var(--navy); margin-bottom: 10px; }
+  .step p { color: var(--muted); font-size: .95rem; }
+
+  .features { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+  .feat { background: #fff; border: 1px solid var(--line); border-radius: 14px; padding: 24px 22px; }
+  .feat .ico { font-size: 1.5rem; margin-bottom: 10px; display: block; }
+  .feat h3 { font-size: 1.02rem; color: var(--navy); margin-bottom: 6px; }
+  .feat p { color: var(--muted); font-size: .9rem; }
+
+  /* ---- Pricing ---- */
+  #pricing { background: var(--navy); }
+  #pricing .sec-head h2, #pricing .sec-head p { color: #fff; }
+  #pricing .sec-head p { color: #b8c4d0; }
+  .price-card { background: #fff; border-radius: 20px; max-width: 460px; margin: 0 auto; padding: 44px 40px; text-align: center; box-shadow: 0 24px 60px rgba(0,0,0,.35); }
+  .price-card .plan { font-weight: 600; color: var(--orange); text-transform: uppercase; letter-spacing: .08em; font-size: .85rem; }
+  .price-card .amount { font-family: 'Sora', sans-serif; font-size: 3.2rem; font-weight: 800; color: var(--navy); margin: 10px 0 2px; }
+  .price-card .amount small { font-size: 1.1rem; color: var(--muted); font-weight: 500; }
+  .price-card .setup { color: var(--muted); margin-bottom: 26px; }
+  .price-card ul { list-style: none; text-align: left; margin-bottom: 30px; }
+  .price-card li { padding: 9px 0 9px 30px; position: relative; color: var(--ink); font-size: .96rem; border-bottom: 1px dashed var(--line); }
+  .price-card li:last-child { border-bottom: none; }
+  .price-card li::before { content: "✓"; position: absolute; left: 4px; color: var(--green); font-weight: 700; }
+  .guarantee { color: #8fa0b0; font-size: .85rem; text-align: center; margin-top: 22px; }
+
+  /* ---- FAQ ---- */
+  .faq-list { max-width: 720px; margin: 0 auto; }
+  details { background: #fff; border: 1px solid var(--line); border-radius: 12px; margin-bottom: 12px; padding: 0 22px; }
+  summary { cursor: pointer; font-weight: 600; color: var(--navy); padding: 18px 0; list-style: none; position: relative; padding-right: 30px; }
+  summary::after { content: "+"; position: absolute; right: 2px; top: 14px; font-size: 1.4rem; color: var(--orange); transition: transform .2s; }
+  details[open] summary::after { transform: rotate(45deg); }
+  details p { color: var(--muted); padding-bottom: 18px; font-size: .95rem; }
+
+  /* ---- Contact ---- */
+  .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: start; }
+  .contact-copy h2 { font-size: 2rem; color: var(--navy); margin-bottom: 16px; }
+  .contact-copy p { color: var(--muted); margin-bottom: 18px; }
+  form { background: #fff; border: 1px solid var(--line); border-radius: 16px; padding: 30px; }
+  label { display: block; font-weight: 600; font-size: .88rem; margin: 14px 0 6px; color: var(--navy); }
+  input, textarea, select { width: 100%; padding: 12px 14px; border: 1px solid var(--line); border-radius: 10px; font-family: 'Inter', sans-serif; font-size: .95rem; background: var(--cream); }
+  input:focus, textarea:focus, select:focus { outline: 2px solid var(--orange); border-color: transparent; }
+  form .btn { width: 100%; margin-top: 22px; }
+
+  footer { background: var(--navy-2); color: #8fa0b0; padding: 36px 0; font-size: .88rem; }
+  .foot-inner { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; }
+  footer a { color: #b8c4d0; }
+
+  @media (max-width: 860px) {
+    .hero-grid, .contact-grid { grid-template-columns: 1fr; }
+    .phone { margin: 0 auto; }
+    .steps, .features { grid-template-columns: 1fr; }
+    .nav-links a:not(.btn) { display: none; }
+    section { padding: 64px 0; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap nav-inner">
+    <a class="logo" href="#">Call<span>Catch</span> AI</a>
+    <div class="nav-links">
+      <a href="#how">How it works</a>
+      <a href="#features">Features</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#faq">FAQ</a>
+      <a class="btn" href="#contact">Get started</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <span class="kicker">For plumbers, electricians, HVAC & every service business</span>
+      <h1>Every missed call is a job your competitor booked. <em>Catch it instead.</em></h1>
+      <p class="sub">CallCatch AI texts back every caller you miss — answers their questions, quotes your prices, and books the appointment. 24/7, even while you're under a sink.</p>
+      <div class="hero-ctas">
+        <a class="btn btn-big" href="#contact">Book a free live demo</a>
+        <a class="ghost" href="#how">See how it works ↓</a>
+      </div>
+      <div class="stat-row">
+        <div class="stat"><b>62%</b><span>of calls to small trades<br>go unanswered*</span></div>
+        <div class="stat"><b>&lt;5 sec</b><span>average response<br>time by text</span></div>
+        <div class="stat"><b>24/7</b><span>nights, weekends,<br>holidays included</span></div>
+      </div>
+    </div>
+    <div class="phone">
+      <div class="phone-top"><b>Miller's Plumbing</b>Text message · now</div>
+      <div class="bubbles">
+        <div class="bubble from-biz">Sorry we missed you! I'm the AI assistant for Miller's Plumbing — how can I help?</div>
+        <div class="bubble from-cust">My water heater died 😩 how much to replace?</div>
+        <div class="bubble from-biz">Sorry to hear that! A tank water heater replacement is estimated at $1,200–$2,500 installed, confirmed on site. Want me to get someone out to you?</div>
+        <div class="bubble from-cust">Yes please, tomorrow morning?</div>
+        <div class="bubble from-biz">Can do! What's your name and address? I'll pass everything to Dave and he'll confirm your time.</div>
+        <div class="bubble from-cust">John, 412 Oak St. Thank you!! 🙏</div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<section id="how">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2>Missed call → booked job, in three steps</h2>
+      <p>No new phone, no app to learn, nothing for your crew to do. It just works behind your existing number.</p>
+    </div>
+    <div class="steps">
+      <div class="step">
+        <div class="num">STEP 1</div>
+        <h3>A customer calls. You're busy.</h3>
+        <p>On a roof, in a crawlspace, on another job. The call rings out — normally, that customer calls the next company on Google.</p>
+      </div>
+      <div class="step">
+        <div class="num">STEP 2</div>
+        <h3>They get a text in seconds</h3>
+        <p>"Sorry we missed you!" — your AI assistant introduces itself and asks how it can help. Most customers reply within a minute.</p>
+      </div>
+      <div class="step">
+        <div class="num">STEP 3</div>
+        <h3>It answers &amp; books the job</h3>
+        <p>Trained ONLY on your services, prices, and hours. It quotes estimates, books appointments into your calendar, and texts you anything it can't answer.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="features" style="padding-top:0">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2>Built for how service businesses actually work</h2>
+    </div>
+    <div class="features">
+      <div class="feat"><span class="ico">🔒</span><h3>Never makes things up</h3><p>Answers only from YOUR business info — your prices, your hours, your service area. Anything else gets forwarded to you.</p></div>
+      <div class="feat"><span class="ico">📅</span><h3>Books real appointments</h3><p>Connects to your Google Calendar, offers open slots, and creates the booking — or texts you the request to confirm.</p></div>
+      <div class="feat"><span class="ico">📲</span><h3>You stay in control</h3><p>Questions it can't answer come straight to your phone with the customer's number. You call back, you close.</p></div>
+      <div class="feat"><span class="ico">🕐</span><h3>Works nights &amp; weekends</h3><p>2 AM burst pipe? The AI responds instantly, captures the job details, and flags it as an emergency for you.</p></div>
+      <div class="feat"><span class="ico">📝</span><h3>Every conversation logged</h3><p>Full transcripts of every text conversation, so you always know what was said and promised.</p></div>
+      <div class="feat"><span class="ico">☎️</span><h3>Keep your number</h3><p>Works alongside your existing business line with simple call forwarding. Your customers notice nothing — except that you always reply.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="pricing">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2>Simple pricing. One plan. Everything included.</h2>
+      <p>Less than the profit on a single service call per month.</p>
+    </div>
+    <div class="price-card">
+      <div class="plan">CallCatch Complete</div>
+      <div class="amount">$99<small>/month</small></div>
+      <div class="setup">+ $497 one-time white-glove setup</div>
+      <ul>
+        <li>Missed-call text-back on your business number</li>
+        <li>AI receptionist trained on your business</li>
+        <li>Appointment booking (calendar included)</li>
+        <li>Owner forwarding for tricky questions</li>
+        <li>Full conversation logs</li>
+        <li>Carrier compliance registration handled for you</li>
+        <li>Updates to your prices/services anytime — free</li>
+        <li>Cancel anytime, no contract</li>
+      </ul>
+      <a class="btn btn-big" href="#contact">Get started</a>
+      <div class="guarantee">Setup fee refunded if you're not live within 14 days.</div>
+    </div>
+  </div>
+</section>
+
+<section id="faq">
+  <div class="wrap">
+    <div class="sec-head"><h2>Questions owners ask us</h2></div>
+    <div class="faq-list">
+      <details>
+        <summary>Do I have to change my phone number?</summary>
+        <p>No. You keep your number. We set up simple call forwarding so unanswered calls roll to your AI assistant. Answer the phone like normal — the AI only steps in when you can't.</p>
+      </details>
+      <details>
+        <summary>What if the AI doesn't know the answer?</summary>
+        <p>It never guesses. If a customer asks something outside your business info, it tells them the owner will follow up and instantly texts you their question and phone number.</p>
+      </details>
+      <details>
+        <summary>Can it really quote my prices?</summary>
+        <p>Yes — it quotes the price ranges you give us, always labeled as estimates confirmed on site. If you'd rather it never discuss pricing, we set it that way instead.</p>
+      </details>
+      <details>
+        <summary>What's the setup process?</summary>
+        <p>We collect your business details (services, prices, hours, service area) in one 30-minute call. We handle the phone setup and the US carrier compliance registration (A2P 10DLC). Most businesses are live within a week.</p>
+      </details>
+      <details>
+        <summary>Is texting customers even legal?</summary>
+        <p>Yes — we register your business through the official US carrier compliance program (A2P 10DLC) as part of setup, so your texts are delivered reliably and legally. The customer texted or called you first, which is the cleanest consent there is.</p>
+      </details>
+      <details>
+        <summary>What if I want to cancel?</summary>
+        <p>Cancel anytime with a message — no contracts, no cancellation fees. Your number and customers stay yours.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<section id="contact" style="padding-top:0">
+  <div class="wrap contact-grid">
+    <div class="contact-copy">
+      <h2>See it answer YOUR business's questions — live</h2>
+      <p>Book a free 15-minute demo. We'll load your actual services and prices into the AI and let you text it yourself. No commitment, no card.</p>
+      <p style="font-weight:600;color:var(--navy)">Fill the form and we'll get back to you within one business day.</p>
+    </div>
+    <form action="https://formsubmit.co/terratex00@gmail.com" method="POST">
+      <input type="hidden" name="_subject" value="New CallCatch AI lead!">
+      <input type="hidden" name="_captcha" value="false">
+      <input type="text" name="_honey" style="display:none">
+      <label for="name">Your name</label>
+      <input id="name" type="text" name="name" required placeholder="Mike Miller">
+      <label for="biz">Business name &amp; trade</label>
+      <input id="biz" type="text" name="business" required placeholder="Miller's Plumbing — Springfield, IL">
+      <label for="email">Email</label>
+      <input id="email" type="email" name="email" required placeholder="mike@millersplumbing.com">
+      <label for="phone">Phone</label>
+      <input id="phone" type="tel" name="phone" placeholder="+1 217 555 0123">
+      <label for="msg">Anything else?</label>
+      <textarea id="msg" name="message" rows="3" placeholder="We miss about 10 calls a week..."></textarea>
+      <button class="btn" type="submit">Book my free demo</button>
+    </form>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap foot-inner">
+    <div><b style="color:#fff">CallCatch AI</b> — Never lose a job to a missed call.</div>
+    <div>*Industry estimate for small service businesses. &nbsp;·&nbsp; <a href="#pricing">Pricing</a> · <a href="#faq">FAQ</a></div>
+  </div>
+</footer>
+
+</body>
+</html>
